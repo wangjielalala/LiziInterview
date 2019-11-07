@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wangjie.dao.CourseDao">
+    <resultMap id="getCourseList" type="wangjie.model.Course" autoMapping="true">
+    </resultMap>
+
+    <select id="courseList" resultMap="getCourseList">
+        SELECT c.*
+        FROM
+            course c
+        WHERE
+            c.teacherName = #{teacherName}
+        <if test="reverse==true">
+            order by c.id desc
+        </if>
+    </select>
+</mapper>
